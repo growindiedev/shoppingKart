@@ -1,4 +1,5 @@
 import './globals.css'
+import Navbar from './(components)/Navbar'
 
 export default function RootLayout({
   children,
@@ -6,13 +7,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="emerald">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+     <Navbar/>
+        {children}
+      </body>
     </html>
   )
 }
