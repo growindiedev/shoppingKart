@@ -1,4 +1,6 @@
 
+import Link from 'next/link';
+
 const Navbar = () => {
 
 return (
@@ -19,12 +21,13 @@ return (
               <li><a>Submenu 2</a></li>
             </ul>
           </li> */}
-          <li><a>Contact</a></li>
-          <li><a><label htmlFor="my-drawer">Shop</label></a></li>
-          <li><a>About</a></li>
+          <li><label htmlFor="my-drawer">Shop</label></li>
+          <li><Link href="/products">Detour</Link></li>
+          <li><Link href="/about">About</Link></li>
+          <li><Link href="/contact">Contact</Link></li>
         </ul>
       </div>
-      <a className="btn btn-ghost normal-case text-xl">SaddaGalla</a>
+      <Link href="/" className="btn btn-ghost normal-case text-xl">SaddaGalla</Link>
     </div>
     <div className="navbar-center hidden lg:flex">
       <ul className="menu menu-horizontal px-1">
@@ -38,9 +41,10 @@ return (
             <li><a>Submenu 2</a></li>
           </ul>
         </li> */}
-        <li><a>About</a></li>
-        <li><a><label htmlFor="my-drawer">Shop</label></a></li>
-        <li><a>Detour</a></li>
+        <li><label htmlFor="my-drawer">Shop</label></li>
+        <li><Link href="/products">Detour</Link></li>
+        <li><Link href="/about">About</Link></li>
+        <li><Link href="/contact">Contact</Link></li>
       </ul>
     </div>
   <div className="navbar-end">
@@ -56,7 +60,7 @@ return (
           <span className="font-bold text-lg">8 Items</span>
           <span className="text-info">Subtotal: $999</span>
           <div className="card-actions">
-            <button className="btn btn-primary btn-block">View cart</button>
+            <Link href="/cart" className="btn btn-primary btn-block">View cart</Link>
           </div>
         </div>
       </div>
