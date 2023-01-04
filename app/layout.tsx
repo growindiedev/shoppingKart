@@ -38,7 +38,7 @@ export default async function RootLayout({
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {/* Sidebar content here */}
             {
-              categories.map((category: string) => <li key={category}><Link href="#">{category}</Link></li>)
+              categories.map((category: string) => <li key={category}><Link href={`/${category}`}>{category}</Link></li>)
             }
           </ul>
         </div>
