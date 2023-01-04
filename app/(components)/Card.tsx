@@ -12,7 +12,7 @@ const Card = ({title, price, description, category, image, rating}: Product) => 
           {title}
           <div className="badge badge-secondary">NEW</div>
         </h2>
-        <p className="text-lg font-800 tracking-wide">${price}</p>
+        <p className="text-lg font-800 tracking-wide text-blue-500">${price}</p>
         <div className="card-actions justify-end">
           <div className="badge badge-outline">{category}</div> 
           <div className="badge badge-outline">Rating: {rating.rate}</div>
