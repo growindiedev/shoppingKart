@@ -1,11 +1,23 @@
 import './globals.css'
 import Navbar from './(components)/Navbar'
+import Link from 'next/link';
 
-export default function RootLayout({
+async function getData() {
+  const res = await fetch('https://fakestoreapi.com/products/categories');
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
+  let categories = await getData()
+
   return (
     <html lang="en" data-theme="emerald">
       {/*
@@ -25,8 +37,9 @@ export default function RootLayout({
           <label htmlFor="my-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {/* Sidebar content here */}
-            <li><a>Sidebar Item 1</a></li>
-            <li><a>Sidebar Item 2</a></li>
+            {
+              categories.map((category: string) => <li key={category}><Link href="#">{category}</Link></li>)
+            }
           </ul>
         </div>
       </div>
