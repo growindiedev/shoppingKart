@@ -13,7 +13,7 @@ export default function Home() {
             <h1 className="mb-5 text-5xl font-bold">SaddaGalla</h1>
             <p className="mb-5">Check out our latest collection</p>
             {/* <button className="btn btn-primary">Shop</button> */}
-            <label htmlFor="my-drawer" className="btn btn-primary drawer-button">Shop Now</label>
+            <label htmlFor="my-drawer" className="btn btn-outline btn-info drawer-button rounded-none">Shop Now</label>
           </div>
         </div>
       </div>

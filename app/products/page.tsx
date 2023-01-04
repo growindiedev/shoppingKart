@@ -1,8 +1,26 @@
 import React from 'react'
+import Card from '../(components)/Card'
+import { Product } from '../../types/product';
 
-const page = () => {
+async function getData() {
+  const res = await fetch('https://fakestoreapi.com/products');
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+}
+
+
+
+const page = async () => {
+  let data = await getData();
+  console.log(data)
   return (
-    <div>this is where we will render all the products</div>
+    <>
+    <div className='grid gap-6 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-6'>
+      {data.map((product: Product) => <Card key={product.id} {...product}/>)}
+    </div>
+    </>
   )
 }
 
