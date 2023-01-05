@@ -1,15 +1,18 @@
 //'use-client'
 import React from 'react'
 import { Product } from '../../types/product'
+import Link from 'next/link'
 
-const Card = ({title, price, description, category, image, rating}: Product) => {
+const Card = ({title, price, description, category, image, rating, id}: Product) => {
 
   return (
     <div className="card card-compact m-2 bg-base-100 shadow-xl">
       <figure><img src={image} alt={title} className="h-48"/></figure>
       <div className="card-body">
         <h2 className="card-title">
+        <Link className="link link-hover" href={`products/${id}`}>
           {title}
+        </Link>
           <div className="badge badge-secondary">NEW</div>
         </h2>
         <p className="text-lg font-800 tracking-wide text-blue-500">${price}</p>
