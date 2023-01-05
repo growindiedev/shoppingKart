@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-  <div className="hero min-h-screen" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+  <div className="hero min-h-full" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
     <div className="hero-overlay bg-opacity-60"></div>
     <div className="hero-content text-center text-neutral-content">
       <div className="max-w-full">
