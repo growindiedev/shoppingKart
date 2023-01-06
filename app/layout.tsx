@@ -1,6 +1,7 @@
 import './globals.css'
 import Navbar from './(components)/Navbar'
 import Link from 'next/link';
+import { StateContext, StateProvider } from './StateProvider';
 
 async function getData() {
   const res = await fetch('https://fakestoreapi.com/products/categories');
@@ -30,8 +31,9 @@ export default async function RootLayout({
      <div className="drawer relative">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
-        {children}  
-        {/* Page content here */}
+        <StateProvider>
+          {children}  
+        </StateProvider>
         </div> 
         <div className="drawer-side">
           <label htmlFor="my-drawer" className="drawer-overlay"></label>

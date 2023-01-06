@@ -1,10 +1,13 @@
-//'use-client'
-import React from 'react'
+'use client'
+import React, {useState, useContext} from 'react'
 import { Product } from '../../types/product'
+import { StateContext } from '../StateProvider'
 import Link from 'next/link'
 
 const Card = ({title, price, description, category, image, rating, id}: Product) => {
 
+  //const [count, setCount] = useState(0)
+  const {cart, setCart} = useContext(StateContext)
   return (
     <div className="card card-compact m-2 bg-base-100 shadow-xl">
       <figure><img src={image} alt={title} className="h-48"/></figure>
@@ -20,7 +23,7 @@ const Card = ({title, price, description, category, image, rating, id}: Product)
           <div className="badge badge-outline">{category}</div> 
           <div className="badge badge-outline">Rating: {rating.rate}</div>
         </div>
-        <button className="btn btn-primary">Buy Now</button>
+        <button className="btn btn-primary" onClick={() => setCart( prev => prev + 1)}>Buy Now {cart}</button>
       </div>
     </div>
   )
