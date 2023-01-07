@@ -39,6 +39,6 @@ export const totalItemsInCart = (cart: Product[]): number => {
 }
 
 export const totalCost = (cart: Product[]): number => {
-  let totalCost = cart.filter(item => item.cartQt && item.cartQt > 0).reduce((acc, {cartQt, price}) => acc + cartQt! * price, 0)
+  let totalCost = parseInt(cart.filter(item => item.cartQt && item.cartQt > 0).reduce((acc, {cartQt, price}) => acc + cartQt! * price, 0).toFixed(2))
   return totalCost
 } 
