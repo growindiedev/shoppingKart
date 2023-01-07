@@ -5,8 +5,6 @@ import { StateContext, StateProvider } from './StateProvider';
 import {Product} from '../types/product'
 
 
-
-
 async function getData() {
   const res = await fetch('https://fakestoreapi.com/products');
   if (!res.ok) {

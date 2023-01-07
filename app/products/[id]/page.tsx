@@ -1,5 +1,6 @@
 import React from 'react'
 import { Product } from '../../../types/product';
+import ManageCart from '../../(components)/ManageCart';
 
 
 async function getData(id: string) {
@@ -26,7 +27,7 @@ const page = async ({params} : {
             <div className="badge badge-accent">{product.category}</div> 
             <div className="badge badge-secondary">Rating: {product.rating.rate}</div>
           </div>
-          <button className="btn btn-primary">Add to cart</button>
+          <ManageCart id={params.id}/>
         </div>
       </div>
     </div>
