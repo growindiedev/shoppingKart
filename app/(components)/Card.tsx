@@ -4,25 +4,41 @@ import { Product } from '../../types/product'
 import { StateContext } from '../StateProvider'
 import Link from 'next/link'
 
-const Card = ({title, price, category, image, rating, id}: Product) => {
+const Card = (product: Product) => {
 
+  const {title, price, category, image, rating, id} = product;
   const {cart, setCart} = useContext(StateContext)
 
 
   const increaseCart = () => {
-    if(!cart[id]){
-      setCart({...cart, [id]: 1})
-    } else {
-      setCart({...cart, [id]: cart[id] + 1})
-    }
+    setCart(cart.map(item => {
+      if(item.id === id){
+        if(item.cartQt){
+          item.cartQt = item.cartQt + 1
+        } else {
+          item.cartQt = 0;
+          item.cartQt = item.cartQt + 1
+        }
+      }
+      return item
+    }))
   }
 
   const decreaseCart = () => {
-    if(cart[id] && cart[id] >= 1){
-      setCart({...cart, [id]: cart[id] - 1})
-    } 
+    setCart(cart.map(item => {
+      if(item.id === id){
+        if(item.cartQt && item.cartQt >= 1){
+          item.cartQt = item.cartQt - 1
+        } else {
+          item.cartQt = 0;
+        }
+      }
+      return item
+    }))
   }
 
+
+  let totalItems = cart.find( item => item.id === id)?.cartQt
   return (
     <div className="card card-compact m-2 bg-base-100 shadow-xl">
       <figure><img src={image} alt={title} className="h-48"/></figure>
@@ -41,6 +57,7 @@ const Card = ({title, price, category, image, rating, id}: Product) => {
         <button className="btn btn-primary" onClick={increaseCart}>Add to cart</button>
         <button className="btn btn-primary" onClick={decreaseCart}>decrease quantity</button>
       </div>
+      <div>{totalItems}</div>
     </div>
   )
 }
