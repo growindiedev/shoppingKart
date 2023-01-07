@@ -1,23 +1,11 @@
 import React from 'react'
-import { Product } from '../../../types/product';
-import ManageCart from '../../(components)/ManageCart';
+import { Product } from '../../types/product'
+import ManageCart from './ManageCart'
 
-
-async function getData(id: string) {
-  const res = await fetch(`https://fakestoreapi.com/products/${id}`);
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
-}
-
-const page = async ({params} : {
-  params: { id: string };
-}) => {
-  let product: Product = await getData(params.id)
+const CartItem = ({product}: { product: Product}) => {
   return (
-    <div className="hero min-h-screen bg-amber-50">
-      <div className="hero-content flex-col lg:flex-row mx-[10%]">
+    <div className="hero">
+      <div className="hero-content flex-col lg:flex-row mx-[10%] my-10 w-[70%]">
         <img src={product.image} className="max-w-xs rounded-lg shadow-2xl mx-10 my-5" />
         <div>
           <h1 className="text-3xl font-bold">{product.title}</h1>
@@ -27,11 +15,11 @@ const page = async ({params} : {
             <div className="badge badge-accent">{product.category}</div> 
             <div className="badge badge-secondary">Rating: {product.rating.rate}</div>
           </div>
-          <ManageCart id={params.id}/>
+          <ManageCart id={String(product.id)}/>
         </div>
       </div>
     </div>
   )
 }
 
-export default page
+export default CartItem
