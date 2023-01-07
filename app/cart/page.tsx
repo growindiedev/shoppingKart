@@ -24,7 +24,7 @@ const Page = () => {
   } 
 
   return (
-    <div className="relative">
+    <div className="relative pt-20">
       {cartItems.map(item => <CartItem key={item.id} product={item}/>)}
       <div className="card card-compact glass w-1/4 bg-base-100 drop-shadow-xl fixed bottom-8 right-8">
         <div className="card-body">

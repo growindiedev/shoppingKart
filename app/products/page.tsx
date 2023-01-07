@@ -13,7 +13,7 @@ async function getData() {
 const page = async () => {
   let data = await getData();
   return (
-    <div className='grid gap-6 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-6'>
+    <div className='grid gap-6 grid-cols-[repeat(auto-fit,_minmax(250px,_1fr))] m-6 pt-20'>
       {data.map((product: Product) => <Card key={product.id} {...product}/>)}
     </div>
   )
