@@ -1,22 +1,22 @@
 'use client';
 
 import { createContext, Dispatch, SetStateAction, useState } from 'react';
+import {Product} from '../types/product'
 
 type contextType = {
-  cart: EmptyObjectWithOptionalArgs
-  setCart: Dispatch<SetStateAction<EmptyObjectWithOptionalArgs>>
+  cart: ShoppingCartStateType
+  setCart: Dispatch<SetStateAction<ShoppingCartStateType>>
 }
 
-type EmptyObjectWithOptionalArgs = {
-  [key: string]: number;
-};
+type ShoppingCartStateType = Array<Product>;
 
 export const StateContext = createContext({} as contextType);
 
-export function StateProvider({ children }: {
+export function StateProvider({ children, products }: {
   children: React.ReactNode
+  products: Product[]
 }) {
-  const [cart, setCart] = useState<EmptyObjectWithOptionalArgs>({}); 
+  const [cart, setCart] = useState<ShoppingCartStateType>(products.map(product => ({...product, cartQt: 0}))); 
   return (
     <StateContext.Provider value={{cart, setCart}}>
       {children}

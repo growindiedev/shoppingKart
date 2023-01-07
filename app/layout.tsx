@@ -2,9 +2,13 @@ import './globals.css'
 import Navbar from './(components)/Navbar'
 import Link from 'next/link';
 import { StateContext, StateProvider } from './StateProvider';
+import {Product} from '../types/product'
+
+
+
 
 async function getData() {
-  const res = await fetch('https://fakestoreapi.com/products/categories');
+  const res = await fetch('https://fakestoreapi.com/products');
   if (!res.ok) {
     throw new Error('Failed to fetch data');
   }
@@ -17,20 +21,17 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
 
-  let categories = await getData()
+  let products: Product[]  = await getData()
+  let categories = [...new Set(products.map(item => item.category))]
 
   return (
     <html lang="en" data-theme="emerald">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
       <body>
         <div className="drawer relative">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-              <StateProvider>
+              <StateProvider products={products}>
                 <Navbar/>
                 {children}  
               </StateProvider>
