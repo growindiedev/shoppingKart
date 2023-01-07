@@ -7,15 +7,20 @@ import Link from 'next/link'
 const Card = ({title, price, category, image, rating, id}: Product) => {
 
   const {cart, setCart} = useContext(StateContext)
-  const [count, setCount] = useState(cart[id])
 
- 
 
-  const updateCart = () => {
-    let copy = cart
-    copy[id] = copy[id] + 1
-    setCart(copy)
-    setCount( prev => prev + 1)
+  const increaseCart = () => {
+    if(!cart[id]){
+      setCart({...cart, [id]: 1})
+    } else {
+      setCart({...cart, [id]: cart[id] + 1})
+    }
+  }
+
+  const decreaseCart = () => {
+    if(cart[id] && cart[id] >= 1){
+      setCart({...cart, [id]: cart[id] - 1})
+    } 
   }
 
   return (
@@ -33,8 +38,8 @@ const Card = ({title, price, category, image, rating, id}: Product) => {
           <div className="badge badge-outline">{category}</div> 
           <div className="badge badge-outline">Rating: {rating.rate}</div>
         </div>
-        <button className="btn btn-primary" onClick={updateCart}>Buy Now</button>
-        <div>{count}</div>
+        <button className="btn btn-primary" onClick={increaseCart}>Add to cart</button>
+        <button className="btn btn-primary" onClick={decreaseCart}>decrease quantity</button>
       </div>
     </div>
   )
