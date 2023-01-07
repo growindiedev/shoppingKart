@@ -8,3 +8,7 @@ export type Product = {
   rating: { rate: number, count: number }
   cartQt?: number
 }
+
+
+
+export type ShoppingCartStateType = Array<Product>;
