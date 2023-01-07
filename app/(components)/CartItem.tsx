@@ -5,8 +5,8 @@ import ManageCart from './ManageCart'
 const CartItem = ({product}: { product: Product}) => {
   return (
     <div className="hero">
-      <div className="hero-content flex-col lg:flex-row mx-[10%] my-10 w-[70%]">
-        <img src={product.image} className="max-w-xs rounded-lg shadow-2xl mx-10 my-5" />
+      <div className="hero-content flex-col lg:flex-row mx-[10%] my-10">
+        <img src={product.image} className="max-w-xs rounded-lg shadow-2xl mx-10" />
         <div>
           <h1 className="text-3xl font-bold">{product.title}</h1>
           <p className="my-6 text-justify">{product.description}</p>

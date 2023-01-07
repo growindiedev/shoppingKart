@@ -27,3 +27,18 @@ export const decreaseCart = (cart: Product[], setCart: React.Dispatch<React.SetS
     return item
   }))
 }
+
+export const totalItemsInCart = (cart: Product[]): number => {
+  let totalItems = cart.reduce((acc, value) => { 
+    if(!value.cartQt){
+      return acc
+    }
+    return acc + value.cartQt
+  }, 0)
+  return totalItems
+}
+
+export const totalCost = (cart: Product[]): number => {
+  let totalCost = cart.filter(item => item.cartQt && item.cartQt > 0).reduce((acc, {cartQt, price}) => acc + cartQt! * price, 0)
+  return totalCost
+} 
